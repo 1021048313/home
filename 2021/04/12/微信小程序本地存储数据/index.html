@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="修改js文件 123456789101112131415161718192021222324252627&#x2F;&#x2F; 判断本地存储中有无旧数据&#x2F;&#x2F; this.getCates();&#x2F;&#x2F; 1. 获取本地存储数据const Cates&#x3D;wx.getStorageSync(&amp;#x27;cates&amp;#x27;);&#x2F;&#x2F; 2. 判断if (!Cates)&amp;#123;    &#x2F;&#x2F; console.log(&quot;n">
+    <meta name="description" content="编写微信小程序应用，本地存储数据避免重复加载">
 <meta property="og:type" content="article">
 <meta property="og:title" content="微信小程序本地存储数据">
 <meta property="og:url" content="http://zhon.fun/2021/04/12/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="修改js文件 123456789101112131415161718192021222324252627&#x2F;&#x2F; 判断本地存储中有无旧数据&#x2F;&#x2F; this.getCates();&#x2F;&#x2F; 1. 获取本地存储数据const Cates&#x3D;wx.getStorageSync(&amp;#x27;cates&amp;#x27;);&#x2F;&#x2F; 2. 判断if (!Cates)&amp;#123;    &#x2F;&#x2F; console.log(&quot;n">
+<meta property="og:description" content="编写微信小程序应用，本地存储数据避免重复加载">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-12T15:51:21.000Z">
-<meta property="article:modified_time" content="2021-04-13T11:13:29.201Z">
+<meta property="article:modified_time" content="2021-04-14T13:27:43.799Z">
 <meta property="article:author" content="Milox">
 <meta property="article:tag" content="MINA">
 <meta property="article:tag" content="本地存储">
@@ -109,7 +109,10 @@
 		
 		</div>
 		
-		<p>修改js文件</p>
+		<p>编写微信小程序应用，本地存储数据避免重复加载</p>
+<span id="more"></span>
+
+<p>修改js文件</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断本地存储中有无旧数据</span></span><br><span class="line"><span class="comment">// this.getCates();</span></span><br><span class="line"><span class="comment">// 1. 获取本地存储数据</span></span><br><span class="line"><span class="keyword">const</span> Cates=wx.getStorageSync(<span class="string">&#x27;cates&#x27;</span>);</span><br><span class="line"><span class="comment">// 2. 判断</span></span><br><span class="line"><span class="keyword">if</span> (!Cates)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// console.log(&quot;no data&quot;);</span></span><br><span class="line">    <span class="built_in">this</span>.getCates();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 判断过期没</span></span><br><span class="line">    <span class="comment">// 10秒</span></span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">Date</span>.now()-Cates.time&gt;<span class="number">1000</span>*<span class="number">10</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// console.log(&quot;outdated&quot;);</span></span><br><span class="line">        <span class="built_in">this</span>.getCates();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">// console.log(&quot;ok！！！！！&quot;);</span></span><br><span class="line">        <span class="built_in">this</span>.Cates=Cates.data;</span><br><span class="line">        <span class="keyword">let</span> leftMenuList=<span class="built_in">this</span>.Cates.map(<span class="function"><span class="params">v</span>=&gt;</span>v.cat_name);</span><br><span class="line">        <span class="keyword">let</span> rightContent=<span class="built_in">this</span>.Cates[<span class="number">0</span>].children;</span><br><span class="line">        <span class="built_in">this</span>.setData(&#123;leftMenuList,rightContent&#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
   
