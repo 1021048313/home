@@ -1,0 +1,967 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>正则表达式 | 天空中横跨着</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Milox">
+    
+
+    
+    <meta name="description" content="正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。 普通字符普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。    字符 描述    [ABC] 匹配 […] 中的所有字符，例如 [">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://zhon.fun/2021/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/index.html">
+<meta property="og:site_name" content="天空中横跨着">
+<meta property="og:description" content="正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。 普通字符普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。    字符 描述    [ABC] 匹配 […] 中的所有字符，例如 [">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/AD8F3320-2F2E-4513-9BB5-84450D62783D.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/A6E72665-CE61-46F4-A72B-A34BC13F5820.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/C6E89F76-D059-4600-A507-74C42306A790.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/366574CC-3706-4B4C-8782-1BFF4CF57582.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/82A7298A-2A94-49E3-AA27-A7778EE89711.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/reg-111.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/reg-222.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/reg-333.jpg">
+<meta property="og:image" content="https://www.runoob.com/wp-content/uploads/2014/03/reg-444.jpg">
+<meta property="article:published_time" content="2021-04-17T13:18:57.000Z">
+<meta property="article:modified_time" content="2021-04-17T13:32:04.544Z">
+<meta property="article:author" content="Milox">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.runoob.com/wp-content/uploads/2014/03/AD8F3320-2F2E-4513-9BB5-84450D62783D.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="天空中横跨着" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/https://ae01.alicdn.com/kf/U558c26a41fe7483eb5e2fa2b3b4405ea4.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/https://ae01.alicdn.com/kf/U558c26a41fe7483eb5e2fa2b3b4405ea4.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/%02.css">
+<link rel="stylesheet" href="/.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/">
+					<img src="https://ae01.alicdn.com/kf/U558c26a41fe7483eb5e2fa2b3b4405ea4.jpg" alt="天空中横跨着" title="天空中横跨着"/>
+				</a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="天空中横跨着">天空中横跨着</a></h1>
+				<h2 class="blog-motto">上万种颜色的巨大彩虹</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:zhon.fun">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2021/04/17/正则表达式/" title="正则表达式" itemprop="url">正则表达式</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Milox" target="_blank" itemprop="author">Milox</a>
+		
+  <p class="article-time">
+    <time datetime="2021-04-17T13:18:57.000Z" itemprop="datePublished"> Published 2021-04-17</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">普通字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">非打印字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">。
+1
+&#x2F;&lt;.*?&gt;&#x2F;
+
+
+
+也可以使用以下正则表达式来匹配 h1 标签，表达式则是：
+1
+&#x2F;&lt;\w+?&gt;&#x2F;
+
+
+
+通过在 *、+ 或 ? 限定符之后放置 **?**，该表达式从”贪婪”表达式转换为”非贪婪”表达式或者最小匹配。
+定位符定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。
+定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。
+正则表达式的定位符有：
+
+
+
+字符
+描述
+
+
+
+^
+匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。
+
+
+$
+匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。
+
+
+\b
+匹配一个单词边界，即字与空格间的位置。
+
+
+\B
+非单词边界匹配。
+
+
+注意：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。
+若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。
+若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。
+若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：
+1
+&#x2F;^Chapter [1-9][0-9]&amp;#123;0,1&amp;#125;&#x2F;
+
+
+真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它既出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。
+1
+&#x2F;^Chapter [1-9][0-9]&amp;#123;0,1&amp;#125;$&#x2F;
+
+
+匹配单词边界稍有不同，但向正则表达式添加了很重要的能力。单词边界是单词和空格之间的位置。非单词边界是任何其他位置。下面的表达式匹配单词 Chapter 的开头三个字符，因为这三个字符出现在单词边界后面：
+1
+&#x2F;\bCha&#x2F;
+
+
+\b 字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。如果它位于字符串的结尾，它在单词的结尾处查找匹配项。例如，下面的表达式匹配单词 Chapter 中的字符串 ter，因为它出现在单词边界的前面：
+1
+&#x2F;ter\b&#x2F;
+
+
+下面的表达式匹配 Chapter 中的字符串 apt，但不匹配 aptitude 中的字符串 apt：
+1
+&#x2F;\Bapt&#x2F;
+
+
+字符串 apt 出现在单词 Chapter 中的非单词边界处，但出现在单词 aptitude 中的单词边界处。对于 \B 非单词边界运算符，位置并不重要，因为匹配不关心究竟是单词的开头还是结尾。
+选择用圆括号 () 将所有选择项括起来，相邻的选择项之间用 | 分隔。
+() 表示捕获分组，**()** 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(n 是一个数字，表示第 n 个捕获组的内容)。
+
+
+但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 ?: 放在第一个选项前来消除这种副作用。
+其中 ?: 是非捕获元之一，还有两个非捕获元是 ?&#x3D; 和 **?!**，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。
+以下列出 ?&#x3D;、?&lt;&#x3D;、?!、?&lt;! 的使用区别**exp1(?&#x3D;exp2)**：查找 exp2 前面的 exp1。
+
+(?&lt;&#x3D;exp2)exp1：查找 exp2 后面的 exp1。
+
+**exp1(?!exp2)**：查找后面不是 exp2 的 exp1。
+
+(?&lt;!exp2)exp1：查找前面不是 exp2 的 exp1。
+
+
+更多内容可以参考：正则表达式的先行断言(lookahead)和后行断言(lookbehind)
+
+反向引用对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 \n 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。
+可以使用非捕获元字符 ?:、?&#x3D; 或 ?! 来重写捕获，忽略对相关匹配的保存。
+反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。
+1
+2
+3
+var str &#x3D; &quot;Is is the cost of of gasoline going up up&quot;;
+var patt1 &#x3D; &#x2F;\b([a-z]+) \1\b&#x2F;ig;
+document.write(str.match(patt1));
+
+
+输出：Is is,of of,up up
+正则表达式中&#x2F;i,&#x2F;g,&#x2F;ig,&#x2F;gi,&#x2F;m的区别和含义
+    &#x2F;i (忽略大小写)
+    &#x2F;g (全文查找出现的所有匹配字符)
+    &#x2F;m (多行查找)
+    &#x2F;gi(全文查找、忽略大小写)
+    &#x2F;ig(全文查找、忽略大小写)
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">定位符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9"><span class="toc-number">7.</span> <span class="toc-text">选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%88%97%E5%87%BA-%E3%80%81-lt-%E3%80%81-%E3%80%81-lt-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8C%BA%E5%88%AB"><span class="toc-number">7.0.1.</span> <span class="toc-text">以下列出 ?&#x3D;、?&lt;&#x3D;、?!、?&lt;! 的使用区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">反向引用</span></a></li></ol>
+		
+		</div>
+		
+		<span id="more"></span>
+
+<p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<h1 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h1><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">[ABC]</td>
+<td align="left">匹配 <strong>[…]</strong> 中的所有字符，例如 <strong>[aeiou]</strong> 匹配字符串 “google runoob taobao” 中所有的 e o u a 字母。</td>
+</tr>
+<tr>
+<td align="left">[^ABC]</td>
+<td align="left">匹配除了 <strong>[…]</strong> 中字符的所有字符，例如 <strong>[^aeiou]</strong> 匹配字符串 “google runoob taobao” 中除了 e o u a 字母的所有字母。</td>
+</tr>
+<tr>
+<td align="left">[A-Z]</td>
+<td align="left">[A-Z] 表示一个区间，匹配所有大写字母，[a-z] 表示所有小写字母。</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">匹配除换行符（\n、\r）之外的任何单个字符，相等于 [^\n\r]</td>
+</tr>
+<tr>
+<td align="left">[\s\S]</td>
+<td align="left">匹配所有。\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</td>
+</tr>
+<tr>
+<td align="left">\w</td>
+<td align="left">匹配字母、数字、下划线。等价于 [A-Za-z0-9_]</td>
+</tr>
+</tbody></table>
+<h1 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h1><p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\cx</td>
+<td align="left">匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符。</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td align="left">\n</td>
+<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td align="left">\S</td>
+<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td align="left">\v</td>
+<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+</tbody></table>
+<h1 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h1><p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 <strong>runoo*b</strong> 中的 *****，简单的说就是表示任何字符串的意思。如果要查找字符串中的 ***** 符号，则需要对 ***** 进行转义，即在其前加一个 <strong>**，**runo*ob</strong> 匹配字符串 <strong>runo*ob</strong>。</p>
+<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符*<em>*</em> 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+<table>
+<thead>
+<tr>
+<th align="left">特别字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $。</td>
+</tr>
+<tr>
+<td align="left">( )</td>
+<td align="left">标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 . 。</td>
+</tr>
+<tr>
+<td align="left">[</td>
+<td align="left">标记一个中括号表达式的开始。要匹配 [，请使用 [。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 ?。</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符。序列 ‘\‘ 匹配 “&quot;，而 ‘(‘ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 ^。</td>
+</tr>
+<tr>
+<td align="left">{</td>
+<td align="left">标记限定符表达式的开始。要匹配 {，请使用 {。</td>
+</tr>
+<tr>
+<td align="left">|</td>
+<td align="left">指明两项之间的一个选择。要匹配 |，请使用 |。</td>
+</tr>
+</tbody></table>
+<h1 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h1><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 ***** 或 <strong>+</strong> 或 <strong>?</strong> 或 <strong>{n}</strong> 或 <strong>{n,}</strong> 或 <strong>{n,m}</strong> 共6种。</p>
+<p>正则表达式的限定符有：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 、 “does” 中的 “does” 、 “doxy” 中的 “do” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td align="left">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody></table>
+<p><strong>贪婪：</strong>下面的表达式匹配从开始小于符号 (&lt;) 到关闭 h1 标记的大于符号 (&gt;) 之间的所有内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&lt;.*&gt;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/AD8F3320-2F2E-4513-9BB5-84450D62783D.jpg" alt="img"></p>
+<p><strong>非贪婪：</strong>如果您只需要匹配开始和结束 h1 标签，下面的非贪婪表达式只匹配 <h1>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&lt;.*?&gt;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/A6E72665-CE61-46F4-A72B-A34BC13F5820.jpg" alt="img"></p>
+<p>也可以使用以下正则表达式来匹配 h1 标签，表达式则是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&lt;\w+?&gt;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/C6E89F76-D059-4600-A507-74C42306A790.jpg" alt="img"></p>
+<p>通过在 *<strong><strong>、</strong>+</strong> 或 <strong>?</strong> 限定符之后放置 **?**，该表达式从”贪婪”表达式转换为”非贪婪”表达式或者最小匹配。</p>
+<h1 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h1><p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
+<p>定位符用来描述字符串或单词的边界，<strong>^</strong> 和 <strong>$</strong> 分别指字符串的开始与结束，<strong>\b</strong> 描述单词的前或后边界，<strong>\B</strong> 表示非单词边界。</p>
+<p>正则表达式的定位符有：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配一个单词边界，即字与空格间的位置。</td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">非单词边界匹配。</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 <strong>^*</strong> 之类的表达式。</p>
+<p>若要匹配一行文本开始处的文本，请在正则表达式的开始使用 <strong>^</strong> 字符。不要将 <strong>^</strong> 的这种用法与中括号表达式内的用法混淆。</p>
+<p>若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 <strong>$</strong> 字符。</p>
+<p>若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^Chapter [1-9][0-9]&#123;0,1&#125;&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它既出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^Chapter [1-9][0-9]&#123;0,1&#125;$&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>匹配单词边界稍有不同，但向正则表达式添加了很重要的能力。单词边界是单词和空格之间的位置。非单词边界是任何其他位置。下面的表达式匹配单词 Chapter 的开头三个字符，因为这三个字符出现在单词边界后面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;\bCha&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p><strong>\b</strong> 字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。如果它位于字符串的结尾，它在单词的结尾处查找匹配项。例如，下面的表达式匹配单词 Chapter 中的字符串 ter，因为它出现在单词边界的前面：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;ter\b&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>下面的表达式匹配 Chapter 中的字符串 apt，但不匹配 aptitude 中的字符串 apt：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;\Bapt&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>字符串 apt 出现在单词 Chapter 中的非单词边界处，但出现在单词 aptitude 中的单词边界处。对于 <strong>\B</strong> 非单词边界运算符，位置并不重要，因为匹配不关心究竟是单词的开头还是结尾。</p>
+<h1 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h1><p>用圆括号 <strong>()</strong> 将所有选择项括起来，相邻的选择项之间用 <strong>|</strong> 分隔。</p>
+<p><strong>()</strong> 表示捕获分组，**()** 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(<strong>n</strong> 是一个数字，表示第 n 个捕获组的内容)。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/366574CC-3706-4B4C-8782-1BFF4CF57582.jpg" alt="img"></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/82A7298A-2A94-49E3-AA27-A7778EE89711.jpg" alt="img"></p>
+<p>但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 <strong>?:</strong> 放在第一个选项前来消除这种副作用。</p>
+<p>其中 <strong>?:</strong> 是非捕获元之一，还有两个非捕获元是 <strong>?=</strong> 和 **?!**，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。</p>
+<h3 id="以下列出-、-lt-、-、-lt-的使用区别"><a href="#以下列出-、-lt-、-、-lt-的使用区别" class="headerlink" title="以下列出 ?=、?&lt;=、?!、?&lt;! 的使用区别"></a>以下列出 ?=、?&lt;=、?!、?&lt;! 的使用区别</h3><p>**exp1(?=exp2)**：查找 exp2 前面的 exp1。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/reg-111.jpg" alt="img"></p>
+<p><strong>(?&lt;=exp2)exp1</strong>：查找 exp2 后面的 exp1。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/reg-222.jpg" alt="img"></p>
+<p>**exp1(?!exp2)**：查找后面不是 exp2 的 exp1。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/reg-333.jpg" alt="img"></p>
+<p><strong>(?&lt;!exp2)exp1</strong>：查找前面不是 exp2 的 exp1。</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/reg-444.jpg" alt="img"></p>
+<blockquote>
+<p>更多内容可以参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/reg-lookahead-lookbehind.html">正则表达式的先行断言(lookahead)和后行断言(lookbehind)</a></p>
+</blockquote>
+<h1 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h1><p>对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 <strong>\n</strong> 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。</p>
+<p>可以使用非捕获元字符 <strong>?:<strong>、</strong>?=</strong> 或 <strong>?!</strong> 来重写捕获，忽略对相关匹配的保存。</p>
+<p>反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;Is is the cost of of gasoline going up up&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> patt1 = <span class="regexp">/\b([a-z]+) \1\b/ig</span>;</span><br><span class="line"><span class="built_in">document</span>.write(str.match(patt1));</span><br></pre></td></tr></table></figure>
+
+<p>输出：Is is,of of,up up</p>
+<p>正则表达式中/i,/g,/ig,/gi,/m的区别和含义<br>    /i (忽略大小写)<br>    /g (全文查找出现的所有匹配字符)<br>    /m (多行查找)<br>    /gi(全文查找、忽略大小写)<br>    /ig(全文查找、忽略大小写)</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/coding/">coding</a>
+</div>
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://zhon.fun/2021/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" data-title="正则表达式 | 天空中横跨着" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2021/04/17/maven爬虫/"  title="maven爬虫">
+ <strong>下一篇：</strong><br/> 
+ <span>maven爬虫
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%AD%97%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">普通字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9E%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6"><span class="toc-number">2.</span> <span class="toc-text">非打印字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-number">3.</span> <span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%90%E5%AE%9A%E7%AC%A6"><span class="toc-number">4.</span> <span class="toc-text">限定符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">。
+1
+&#x2F;&lt;.*?&gt;&#x2F;
+
+
+
+也可以使用以下正则表达式来匹配 h1 标签，表达式则是：
+1
+&#x2F;&lt;\w+?&gt;&#x2F;
+
+
+
+通过在 *、+ 或 ? 限定符之后放置 **?**，该表达式从”贪婪”表达式转换为”非贪婪”表达式或者最小匹配。
+定位符定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。
+定位符用来描述字符串或单词的边界，^ 和 $ 分别指字符串的开始与结束，\b 描述单词的前或后边界，\B 表示非单词边界。
+正则表达式的定位符有：
+
+
+
+字符
+描述
+
+
+
+^
+匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。
+
+
+$
+匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。
+
+
+\b
+匹配一个单词边界，即字与空格间的位置。
+
+
+\B
+非单词边界匹配。
+
+
+注意：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 ^* 之类的表达式。
+若要匹配一行文本开始处的文本，请在正则表达式的开始使用 ^ 字符。不要将 ^ 的这种用法与中括号表达式内的用法混淆。
+若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 $ 字符。
+若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：
+1
+&#x2F;^Chapter [1-9][0-9]&amp;#123;0,1&amp;#125;&#x2F;
+
+
+真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它既出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。
+1
+&#x2F;^Chapter [1-9][0-9]&amp;#123;0,1&amp;#125;$&#x2F;
+
+
+匹配单词边界稍有不同，但向正则表达式添加了很重要的能力。单词边界是单词和空格之间的位置。非单词边界是任何其他位置。下面的表达式匹配单词 Chapter 的开头三个字符，因为这三个字符出现在单词边界后面：
+1
+&#x2F;\bCha&#x2F;
+
+
+\b 字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。如果它位于字符串的结尾，它在单词的结尾处查找匹配项。例如，下面的表达式匹配单词 Chapter 中的字符串 ter，因为它出现在单词边界的前面：
+1
+&#x2F;ter\b&#x2F;
+
+
+下面的表达式匹配 Chapter 中的字符串 apt，但不匹配 aptitude 中的字符串 apt：
+1
+&#x2F;\Bapt&#x2F;
+
+
+字符串 apt 出现在单词 Chapter 中的非单词边界处，但出现在单词 aptitude 中的单词边界处。对于 \B 非单词边界运算符，位置并不重要，因为匹配不关心究竟是单词的开头还是结尾。
+选择用圆括号 () 将所有选择项括起来，相邻的选择项之间用 | 分隔。
+() 表示捕获分组，**()** 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(n 是一个数字，表示第 n 个捕获组的内容)。
+
+
+但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 ?: 放在第一个选项前来消除这种副作用。
+其中 ?: 是非捕获元之一，还有两个非捕获元是 ?&#x3D; 和 **?!**，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。
+以下列出 ?&#x3D;、?&lt;&#x3D;、?!、?&lt;! 的使用区别**exp1(?&#x3D;exp2)**：查找 exp2 前面的 exp1。
+
+(?&lt;&#x3D;exp2)exp1：查找 exp2 后面的 exp1。
+
+**exp1(?!exp2)**：查找后面不是 exp2 的 exp1。
+
+(?&lt;!exp2)exp1：查找前面不是 exp2 的 exp1。
+
+
+更多内容可以参考：正则表达式的先行断言(lookahead)和后行断言(lookbehind)
+
+反向引用对一个正则表达式模式或部分模式两边添加圆括号将导致相关匹配存储到一个临时缓冲区中，所捕获的每个子匹配都按照在正则表达式模式中从左到右出现的顺序存储。缓冲区编号从 1 开始，最多可存储 99 个捕获的子表达式。每个缓冲区都可以使用 \n 访问，其中 n 为一个标识特定缓冲区的一位或两位十进制数。
+可以使用非捕获元字符 ?:、?&#x3D; 或 ?! 来重写捕获，忽略对相关匹配的保存。
+反向引用的最简单的、最有用的应用之一，是提供查找文本中两个相同的相邻单词的匹配项的能力。
+1
+2
+3
+var str &#x3D; &quot;Is is the cost of of gasoline going up up&quot;;
+var patt1 &#x3D; &#x2F;\b([a-z]+) \1\b&#x2F;ig;
+document.write(str.match(patt1));
+
+
+输出：Is is,of of,up up
+正则表达式中&#x2F;i,&#x2F;g,&#x2F;ig,&#x2F;gi,&#x2F;m的区别和含义
+    &#x2F;i (忽略大小写)
+    &#x2F;g (全文查找出现的所有匹配字符)
+    &#x2F;m (多行查找)
+    &#x2F;gi(全文查找、忽略大小写)
+    &#x2F;ig(全文查找、忽略大小写)
+</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%BD%8D%E7%AC%A6"><span class="toc-number">6.</span> <span class="toc-text">定位符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9"><span class="toc-number">7.</span> <span class="toc-text">选择</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E5%88%97%E5%87%BA-%E3%80%81-lt-%E3%80%81-%E3%80%81-lt-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%8C%BA%E5%88%AB"><span class="toc-number">7.0.1.</span> <span class="toc-text">以下列出 ?&#x3D;、?&lt;&#x3D;、?!、?&lt;! 的使用区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%8D%E5%90%91%E5%BC%95%E7%94%A8"><span class="toc-number">8.</span> <span class="toc-text">反向引用</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">Categories</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/coding/" title="coding">coding<sup>12</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/codingqi/" title="codingqi">codingqi<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/MAVEN/" title="MAVEN">MAVEN<sup>3</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/MINA/" title="MINA">MINA<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/conf/" title="conf">conf<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/OS/" title="OS">OS<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/website/" title="website">website<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/本地存储/" title="本地存储">本地存储<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/node/" title="node">node<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ubuntu/" title="ubuntu">ubuntu<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/klee/" title="klee">klee<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/JDBC/" title="JDBC">JDBC<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/spider/" title="spider">spider<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/links/" title="links">links<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Milox <br/>
+			From Rainbow Sea</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2021 
+		
+		<a href="/about" target="_blank" title="Milox">Milox</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
