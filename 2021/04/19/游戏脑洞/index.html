@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>自定义组件事件传递 | 天空中横跨着</title>
+    <title>游戏脑洞 | 天空中横跨着</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Milox">
     
 
     
-    <meta name="description" content="微信小程序一个自定义组件Component，调用它的事件传递过程">
+    <meta name="description" content="兴桥学院2号宿舍楼事件地理设定中心思想：学校的喜鹊好多啊。 地域：兴庆市兴桥区 大致地图：    写字楼  医院 医院  中学            图书馆  学院1号宿舍 学院2号宿舍  废弃宿舍   政府  学院 学院  废弃宿舍           居民区  公园 公园  居民区   居民区     居民区   居民区  商场 商场  居民区   背景设定中心思想：学校的喜鹊好肥啊。  10">
 <meta property="og:type" content="article">
-<meta property="og:title" content="自定义组件事件传递">
-<meta property="og:url" content="http://zhon.fun/2021/04/14/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/index.html">
+<meta property="og:title" content="游戏脑洞">
+<meta property="og:url" content="http://zhon.fun/2021/04/19/%E6%B8%B8%E6%88%8F%E8%84%91%E6%B4%9E/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="微信小程序一个自定义组件Component，调用它的事件传递过程">
+<meta property="og:description" content="兴桥学院2号宿舍楼事件地理设定中心思想：学校的喜鹊好多啊。 地域：兴庆市兴桥区 大致地图：    写字楼  医院 医院  中学            图书馆  学院1号宿舍 学院2号宿舍  废弃宿舍   政府  学院 学院  废弃宿舍           居民区  公园 公园  居民区   居民区     居民区   居民区  商场 商场  居民区   背景设定中心思想：学校的喜鹊好肥啊。  10">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-04-14T15:00:15.000Z">
-<meta property="article:modified_time" content="2021-04-14T15:15:54.958Z">
+<meta property="article:published_time" content="2021-04-19T15:08:46.000Z">
+<meta property="article:modified_time" content="2021-04-19T15:29:50.144Z">
 <meta property="article:author" content="Milox">
-<meta property="article:tag" content="MINA">
+<meta property="article:tag" content="idea">
 <meta name="twitter:card" content="summary">
 
     
@@ -88,14 +88,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2021/04/14/自定义组件事件传递/" title="自定义组件事件传递" itemprop="url">自定义组件事件传递</a>
+      <a href="/2021/04/19/游戏脑洞/" title="游戏脑洞" itemprop="url">游戏脑洞</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Milox" target="_blank" itemprop="author">Milox</a>
 		
   <p class="article-time">
-    <time datetime="2021-04-14T15:00:15.000Z" itemprop="datePublished"> Published 2021-04-14</time>
+    <time datetime="2021-04-19T15:08:46.000Z" itemprop="datePublished"> Published 2021-04-19</time>
     
   </p>
 </header>
@@ -104,38 +104,96 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Components"><span class="toc-number">1.</span> <span class="toc-text">Components</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#wxss%E5%92%8Cwxml"><span class="toc-number">1.1.</span> <span class="toc-text">wxss和wxml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">js文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#properties"><span class="toc-number">1.2.1.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#methods"><span class="toc-number">1.2.2.</span> <span class="toc-text">methods</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Page"><span class="toc-number">2.</span> <span class="toc-text">Page</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B4%E6%A1%A5%E5%AD%A6%E9%99%A22%E5%8F%B7%E5%AE%BF%E8%88%8D%E6%A5%BC%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">兴桥学院2号宿舍楼事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">地理设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.2.</span> <span class="toc-text">背景设定</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<p>微信小程序一个自定义组件Component，调用它的事件传递过程</p>
-<span id="more"></span>
-
-<h1 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h1><p>新建component，其中有wxss、wxml、js、json四个文件</p>
-<h2 id="wxss和wxml"><a href="#wxss和wxml" class="headerlink" title="wxss和wxml"></a>wxss和wxml</h2><p>定义组件的样式，和普通的页面一致</p>
-<h2 id="js文件"><a href="#js文件" class="headerlink" title="js文件"></a>js文件</h2><h3 id="properties"><a href="#properties" class="headerlink" title="properties"></a>properties</h3><p>（类似于data）存放数据</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">properties: &#123;</span><br><span class="line">    tabs:&#123;</span><br><span class="line">      type:<span class="built_in">Array</span>,</span><br><span class="line">      value:[]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<h3 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h3><p>在wxml中设置点击事件的话，调用的事件函数放在这里</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 组件的方法列表</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">methods: &#123;</span><br><span class="line">  handleItemTap(e)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;index&#125;=e.currentTarget.dataset;</span><br><span class="line">    <span class="comment">// console.log(index);</span></span><br><span class="line">    <span class="comment">// 向调用这个组件的传递事件tabsItemChange和参数index</span></span><br><span class="line">    <span class="built_in">this</span>.triggerEvent(<span class="string">&quot;tabsItemChange&quot;</span>,&#123;index&#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="Page"><a href="#Page" class="headerlink" title="Page"></a>Page</h1><p>首先json文件中usingComponents需要引入它：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;usingComponents&quot;: &#123;</span><br><span class="line">    &quot;Tabs&quot;:&quot;../../components/tabs/Tabs&quot;</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-
-<p>“Tabs”则作为这个组件的名字，在wxml中调用</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Tabs</span>&gt;</span><span class="tag">&lt;/<span class="name">Tabs</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>需要传递参数tabs（写在js文件的data中）</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Tabs</span> <span class="attr">tabs</span>=<span class="string">&quot;&#123;&#123;tabs&#125;&#125;&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">Tabs</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>当从组件中传来事件响应时，需要监听事件，名字=bind+之前的传递事件名</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Tabs</span> <span class="attr">tabs</span>=<span class="string">&quot;&#123;&#123;tabs&#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag"><span class="attr">bindtabsItemChange</span>=<span class="string">&quot;handleTabsItemChange&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Tabs</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>在这里声明了一个handleTabsItemChange函数，需要在js中实现</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">handleTabsItemChange(e)</span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// 这里有传过来的参数index</span></span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">  <span class="keyword">const</span> &#123;index&#125;=e.detai;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
+		<h1 id="兴桥学院2号宿舍楼事件"><a href="#兴桥学院2号宿舍楼事件" class="headerlink" title="兴桥学院2号宿舍楼事件"></a>兴桥学院2号宿舍楼事件</h1><h2 id="地理设定"><a href="#地理设定" class="headerlink" title="地理设定"></a>地理设定</h2><p>中心思想：学校的喜鹊好多啊。</p>
+<p>地域：兴庆市兴桥区</p>
+<p>大致地图：</p>
+<table>
+<thead>
+<tr>
+<th>写字楼</th>
+<th></th>
+<th>医院</th>
+<th>医院</th>
+<th></th>
+<th>中学</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>图书馆</td>
+<td></td>
+<td>学院1号宿舍</td>
+<td>学院2号宿舍</td>
+<td></td>
+<td>废弃宿舍</td>
+</tr>
+<tr>
+<td>政府</td>
+<td></td>
+<td>学院</td>
+<td>学院</td>
+<td></td>
+<td>废弃宿舍</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>居民区</td>
+<td></td>
+<td>公园</td>
+<td>公园</td>
+<td></td>
+<td>居民区</td>
+</tr>
+<tr>
+<td>居民区</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>居民区</td>
+</tr>
+<tr>
+<td>居民区</td>
+<td></td>
+<td>商场</td>
+<td>商场</td>
+<td></td>
+<td>居民区</td>
+</tr>
+</tbody></table>
+<h2 id="背景设定"><a href="#背景设定" class="headerlink" title="背景设定"></a>背景设定</h2><p>中心思想：学校的喜鹊好肥啊。</p>
+<ul>
+<li>10年前的商场火灾。</li>
+<li>废弃的员工宿舍。</li>
+<li>宿舍里有很多镜子</li>
+<li>宿舍楼的温度异常地低</li>
+<li>电梯会停在奇妙的楼层（电梯算法？）</li>
+<li>唯一的一门非专业课是摄影（会拍到奇怪的东西）</li>
+<li>玩家可以触发“史上最久延毕”成就</li>
+<li>4月份可以捡到柳絮球</li>
+<li>游戏开始需要打个电话提高交流技能，不然没人理你</li>
+<li>建筑的接地线可以接通时间</li>
+<li>钟楼会报时</li>
+<li>附近的医院出过医疗事故</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -143,13 +201,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/coding/">coding</a>
+  <a class="article-category-link" href="/categories/gaming/">gaming</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/MINA/">MINA</a>
+  <span></span> <a href="/tags/idea/">idea</a>
   </div>
 
 </div>
@@ -158,7 +216,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://zhon.fun/2021/04/14/%E8%87%AA%E5%AE%9A%E4%B9%89%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6%E4%BC%A0%E9%80%92/" data-title="自定义组件事件传递 | 天空中横跨着" data-tsina="" class="share clearfix">
+	  <div data-url="http://zhon.fun/2021/04/19/%E6%B8%B8%E6%88%8F%E8%84%91%E6%B4%9E/" data-title="游戏脑洞 | 天空中横跨着" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -172,18 +230,18 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2021/04/15/ubuntu系统中安装klee/" title="ubuntu系统中安装klee">
+ <a href="/2021/04/19/回调函数/" title="回调函数">
   <strong>上一篇：</strong><br/>
   <span>
-  ubuntu系统中安装klee</span>
+  回调函数</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2021/04/14/git/"  title="git">
+<a href="/2021/04/18/进程和线程/"  title="进程和线程">
  <strong>下一篇：</strong><br/> 
- <span>git
+ <span>进程和线程
 </span>
 </a>
 </div>
@@ -200,7 +258,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Components"><span class="toc-number">1.</span> <span class="toc-text">Components</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#wxss%E5%92%8Cwxml"><span class="toc-number">1.1.</span> <span class="toc-text">wxss和wxml</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">js文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#properties"><span class="toc-number">1.2.1.</span> <span class="toc-text">properties</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#methods"><span class="toc-number">1.2.2.</span> <span class="toc-text">methods</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Page"><span class="toc-number">2.</span> <span class="toc-text">Page</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B4%E6%A1%A5%E5%AD%A6%E9%99%A22%E5%8F%B7%E5%AE%BF%E8%88%8D%E6%A5%BC%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">兴桥学院2号宿舍楼事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">地理设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.2.</span> <span class="toc-text">背景设定</span></a></li></ol></li></ol>
  
   </div>
 
