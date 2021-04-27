@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="中断|异常">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="操作系统环境与运行机制">
 <meta property="og:url" content="https://zhon.fun/2021/04/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E4%B8%8E%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="中断|异常">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-16T08:52:07.000Z">
-<meta property="article:modified_time" content="2021-04-17T16:14:50.918Z">
+<meta property="article:modified_time" content="2021-04-27T05:38:47.867Z">
 <meta property="article:author" content="Milox">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
@@ -106,128 +106,22 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">运行环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.</span> <span class="toc-text">CPU状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">中断|异常机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%EF%BC%9A%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E5%93%8D%E5%BA%94"><span class="toc-number">1.3.1.</span> <span class="toc-text">硬件：中断&#x2F;异常响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">中断向量表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%EF%BC%9A%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">软件：中断&#x2F;异常处理程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88"><span class="toc-number">1.3.4.</span> <span class="toc-text">综合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%AF%E5%95%A5"><span class="toc-number">2.1.</span> <span class="toc-text">是啥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">典型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">设计</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<p>中断|异常</p>
-<span id="more"></span>
-
-<h1 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h1><h2 id="CPU状态"><a href="#CPU状态" class="headerlink" title="CPU状态"></a>CPU状态</h2><ol>
-<li><p>中央处理器CPU构成：</p>
-<p>运算器|控制器|much 寄存器|高速缓存</p>
-</li>
-<li><p>常见控制和状态寄存器</p>
-<ul>
-<li>程序计数器PC：记录将要取出的指令的地址</li>
-<li>指令寄存器IR：记录最近取出的指令</li>
-<li>程序状态字PSW：记录处理器的运行状态</li>
-</ul>
-</li>
-<li><p>操作系统有两种CPU状态</p>
-<ul>
-<li>内核态</li>
-<li>用户态</li>
-</ul>
-<p>因此，指令分特权指令、非特权指令</p>
-<p>用户态-&gt; 内核态：中断、异常、陷入机制</p>
-<p>内核态-&gt; 用户套：设置PSW</p>
-<p>陷入指令/访管指令（给用户的接口，可以调用操作系统功能）</p>
-</li>
-</ol>
-<h2 id="中断-异常机制"><a href="#中断-异常机制" class="headerlink" title="中断|异常机制"></a>中断|异常机制</h2><ol>
-<li><p>定义</p>
-<p>CPU对某个事件反应：</p>
-<p>CPU暂停doing，保留现场，自动转去执行处理程序，ok后返回断点，继续做被打断的。</p>
-</li>
-<li><p>特点</p>
-<ul>
-<li>随机发生</li>
-<li>自动处理：硬件完后曾</li>
-<li>可恢复：打断</li>
-</ul>
-</li>
-<li><p>目的</p>
-<p>中断：支持CPU和设备之间的并行操作</p>
-<p>异常：CPU执行指令时自身出现问题</p>
-</li>
-<li><p>事件分类</p>
-<ul>
-<li>中断（外中断）：正在执行的程序不想要<ul>
-<li>I/O中断</li>
-<li>时钟中断</li>
-<li>硬件故障</li>
-</ul>
-</li>
-<li>异常（内中断）：正在执行的程序引发的<ul>
-<li>系统调用</li>
-<li>页故障</li>
-<li>保护性异常</li>
-<li>断点指令</li>
-<li>other程序性异常（ie. 算术溢出）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h2 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h2><h3 id="硬件：中断-异常响应"><a href="#硬件：中断-异常响应" class="headerlink" title="硬件：中断/异常响应"></a>硬件：中断/异常响应</h3><p>捕获请求，响应，将CPU控制权交出</p>
-<p><strong>中断寄存器</strong></p>
-<p>每条指令周期最后扫描中断寄存器</p>
-<p>​    若有： 中断码传入PSW相应位，查中断向量表引    出中断处理程序</p>
-<p>​    若无：继续做下一个指令</p>
-<p>完整过程：</p>
-<pre><code>1. 设备发中断信号
-2. 硬件保护现场PSW
-3. 查中断向量表
-4. 中断程序入口地址传到寄存器
-5. 执行中断处理程序
-</code></pre>
-<h3 id="中断向量表"><a href="#中断向量表" class="headerlink" title="中断向量表"></a>中断向量表</h3><p><strong>中断向量</strong>：一个内存单元，放 中断处理程序入口地址 和 程序运行时所需的处理机状态字</p>
-<h3 id="软件：中断-异常处理程序"><a href="#软件：中断-异常处理程序" class="headerlink" title="软件：中断/异常处理程序"></a>软件：中断/异常处理程序</h3><p>识别，处理</p>
-<p>过程：</p>
-<ol>
-<li>保存寄存器信息</li>
-<li>分析中断/异常的具体原因</li>
-<li>执行对应处理</li>
-<li>恢复现场</li>
-</ol>
-<h3 id="综合"><a href="#综合" class="headerlink" title="综合"></a>综合</h3><p>例子：以设备输入输出中断为例</p>
-<ol>
-<li><p>打印机给CPU发中断信号（硬件）<br>CPU处理完当前指令后检测到中断，判断出中断来源并向相关设备发确认信号</p>
-</li>
-<li><p>CPU开始为软件处理中断做准备：（硬件）<br><strong>处理器状态被切换到内核态</strong><br>在系统栈中保存被中断程序的重要上下文环境，主要是程序计数器PC，程序状态字PSW</p>
-</li>
-<li><p>CPU根据中断码查中断向量表，获得与该中断相关的处理程序的入口地址，并向PC设置成该地址，新的指令周期开始时，CPU控制转移到中断处理程序（硬件）</p>
-</li>
-<li><p>中断处理程序开始工作（软件）<br>在系统栈中保存现场信息<br>检查I/O设备的状态信息，操纵I/O设备或者在设备和内存之间传送数据等等</p>
-</li>
-<li><p>中断处理结束时，CPU检测到中断返回指令，从系统栈中恢复被中断程序的上下文环境，CPU状态恢复成原来的状态，PSW和PC恢复成中断前的值，CPU开始一个新的指令周期（硬件）</p>
-</li>
-</ol>
-<p>例子：I/O中断处理程序(软件）：</p>
-<p>通常分为两类处理：</p>
-<ul>
-<li>I/O操作正常结束<br>若有程序正等待此次I/O的结果，则应将其唤醒<br>若要继续I/O操作，需要准备号数据重新启动I/O</li>
-<li>I/O操作出现错误<br>需要重新执行失败的I/O操作<br>重试次数有上限，达到时系统将判定硬件故障</li>
-</ul>
-<h1 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h1><p>系统调用机制</p>
-<h2 id="是啥"><a href="#是啥" class="headerlink" title="是啥"></a>是啥</h2><p>用户在编程时可以调用的<strong>操作系统功能</strong></p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>是OS给编程人员的only接口</p>
-<p>使CPU状态从用户态陷入内核态</p>
-<h2 id="典型"><a href="#典型" class="headerlink" title="典型"></a>典型</h2><p>进程控制、通信；文件使用；目录操作；设备管理；信息维护</p>
-<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><ol>
-<li>利用中断|异常机制</li>
-<li>特殊指令：陷入指令，引发异常，完成用户态到内核态的切换</li>
-<li>编号和参数确定</li>
-<li>系统调用表：存服务的日寇地址</li>
-<li>参数传递问题：<ol>
-<li>陷入指令，只能带有限的参数</li>
-<li>通用寄存器，个数限制</li>
-<li>在内存中开辟专用堆栈区</li>
-</ol>
-</li>
-</ol>
-  
+		<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="a043c683eb0eb3a37751fd1f8bc800ed14b24dd96de76802296d0674b59d7aa3">45473c50cb2bed408fcb75efd992789a6029acff64c7f4118af1eb9a4473ac68fe7177bc7f547b198288ef09ca0cd67dbb2089749aa1f36f8c4bf9bc38c562877319826f5fd871d284c2c7d7fa5a75914472936f05ee33bbe9c67c6de0b68ce24f11e824d8d0415d304d5f494239ded3dc1cd0a41ce8ce475066f866af37498b76b31475b5f2d046c9dd457fdf08a4e5b53068dad01c0ddaecee622fefac825e350b0ae2ecdb7cd9213d07f2d0ce1db3c2771c01698eb326f142f93c47549f5211e4a8592ab1f9315906e1a70319dfb9c0ca0ceffdd000b49e7cc446564d29037359534571ab50f4c2cb31b75b2c03a6d13f846490368d905e58addf0b7ba16b21228cce8816db75cc6cbc69427a7d84dff9544e3fed0baa040e016b994bfcf32c226add4f50e0ce4e5a9d618bb350e3c543a0a7645b8bbe98b7b76d4efed20938de45c428e0d389cd21ad731fb75ee785381d2ede2d6af14291d3a16bd2561f54ccaeb488d1d2cade131c1b7ff0b45a8e8eefe21a28a1ba99e2be9ffe00cfe85e9e73c733cad792844705931d2318496015fd1b046d07f8d2acc54b176ef9e22760f708dec19204710d5338d7ccf1fcda64e2a2001dabfec4a14eca8135af8380569e3477ba4407954f04bde3d69787639a17c86b38a3faff1af108318c3d24dca08b835a26732755611b601c611cda5fdf1a714a15240d2b212c36e4ffd03382f784a18c95d4a4d24e2b50c33264ebfc77639c293e3f8d8c977d8100ff0882cf86b3dc5c978856bc4f7095b559ed735c3613e9308f5fe7a3d3ff76ad5ce65985a1f641e92c0e72ca2c0a5c40a4d892875c082f50c25bbae97743b7eab3960e64190284576a9b9516c9cc029b53a885ec395352444a01a3020a0043440f2545d5cc910d8575ea6ba48c1e2a228a04e284c866e2f61fedd12b101f5fb5f19cf17255bc242b2410be779ba1001fd4740f8b84a5f8605e2e55951dd2e797807fa9cbc496be942a6794f4ebc5438d4d0c9dbaa902c9ae068ec4d5d44f0925ba08f94d41ea4edba8687449a5323a4ac1d87bbb141bcc16f01405203b798dfda2e66d9846faaa2bac12af02e744b605da0ff9108082e1a30eb61dee7bdecc1825bcba40721988a91fa1d8226b5083ad9eae760dfeb982758ac368e9c5d248713959b458e7386e298644e2991b2be917a0d1689c5c85890d50c97d4879dec1f980cc7e24a77e86799514142d08597c7d6e39464df06fdd3ec0ca46cb6abcd3103c8572cdb2972ca711cf889a0f6aa3670dba29a752f35d89b83f4df655b63bc4cc5a8ab2f5e0983f5fc07ed74da858ac9d3815efaa16b3682d6d626808169f54a89157548f3f099eb50537db90ba1ffe6e8199cad459bd9e4b6a67e600aae33440dc8a9065840bed80e51c2b5f365cb3433f96caf1f0fccb3831b76fea8ef6eb0bafbc46a4c284393138e95a5957f47b54f721b0c959b393bef505ed7d717f4a24e7b503a415f8048a44ec490ce498f8b67f2f1d5a48565dfd06bf9cd37201faa82fd03e406d0ae0381aee3181fb472a4d8f168024403958fff8e52a6425806fbb0f28b4e9f6fa10dcaba7bce3c95b3b4f3e8c556a9cbb990466f86a15e0297462c13b6c3236a3a535c32a6af254a45f5c5cc80d1a9e17f30a337c5dcff172c6f9e303c1e6720cf0c1afd75061fc04c121774b17f8ec6852af10a144f9dab6952e132e4f97eabadd1f1ac917516c806839496a2cff51649699d4c562553a821c8e6ab5fed5acb185e48743deadd98f3230535788996a24a8951ffc9b932d50e3c619a6077b1792f8c24d87215ca8c85620c3bc024b40af2d017eacf77d1448d81fef67a13291a52f7765670847f0879d203e7d55b1a0c9778de01cb7c94534b7cf1101013657b7e418593ca1d0229169be02ec2667b5b16eabc6e90d0e19e45d7ee862d3dad680b4b203bb60e8c5ccbd671a228cfb8e87328a13e4ce575a2aac3200bdbe8777177a1d217cebf8d44c6e868942cc729eb1a16c7edc6a95a9cfd3ef0c052c9ad43d860d4423b936ff76abc86cf4405c761704d6e12e733682946f66b80b72e07c95ba818d9c4c56535d0985c29643803e68e7dfe730147345fa0f9d865d1b3cf9fe3aef3bccbaf02422b086c541e1793b8f35312a6004583136e027ab5d93ad786d45f79c45a34d6a4ab52bf5f3046bf2a1b2423a90773438623c66dd27b6dd4850d363611f95f9d0fd120231465c55db70a9086d63384498d1dfee9a6c4a0583ee626176f596916c0aaa5d083998aea97f20260d1814f94e6aa626cac13d6a7fff3e2da6801fc513ea0e790c27fc3d1859bcac8d81d085aef331964960d15d858ecfb6b4ab6c58da37116d709558c07f4ad5617bb396c8728a18e1f7dbc75ec801ae1ae39e875b9a64b3ca565e08eae95e2ac25d6e7d36b814424de6e3439fbd682d8608ba2bfa026c2f9ae9c0c9056d2e9d926988d884664494d7135591754ec185b62a9be1f8c290b9e381e21bfcf596c993604dd3ec44f4c6ebad761975b285822f0157e0ce81ec9e284f9575376e5f30aa0104b5d615080c258182a8c97ac187a4d614497977ce32c851b281b60df93a3498ed2d895d7e58ba1ea3edb1025698d05f04151db9a6ef3977838ad9e98cfb22a03cb93e1aa60b7f5635c426a4ac36e37324736c93e5e5eb1043f0885dc5dc7bc571ee2ef265b247f110a4a96a36104c2a6a800ff053e5bfffc2e5de9b58a388faaca901e9d79a1d6d4a71f48a0f72b57f0a69ffb35915190d407a12086fb2ab6ff8f1412348f3ef7736a99cf619062ab99f5931ce09cac19e5ad51e98f6d8de79624193f580e58535e90396131a43e0cf183727ef49b2900e750c741488778b3910a40299e0d8cef825a88f5b3c2427de99cb690b1326812e11f406d05390261dd86709dc1b81e18b0b68101a4ba28f5936b06d97875f0cc89a23e66531429ad69bf3b28e4af2c70c5acb0b28d7d8264d8f14e284f235839254ee8dfb61d83fb03b7ef52733c130248db87adf41cce7163bf83b0b20ce2153ec8d5468bcb1c5b5883e03320456313f7dacc62d799a093c03864a02255c299008363be075df4cd2f277b8b2675cb78a767e3fe3d4dbd14ad647ce4969ceaa7aed59049d7d54b623fb2f9077c2ccbcabd15acabe599a3970ded68d4e76bd315ecb4ac54b26d03df51283300a75713a3dc28ecf738c65b28eec1a5f955519ffc30ff21d9d1da8400d2fb700f4ce553aebc5afd8f0977afc3132710b2aaa697376469ccbb031db8cb08c3d63267205fe3a9dc1f5a910648bf0274085baadf979838426e8ffbcf07500033aa54d4decaf7f0759de16b4779610649b814bc50711eb4f9aff9bd283529e38a282146399273c32efb46d8471cff5eba8f464649a8f8538a25898b06f89f27eb995d733664dfaddd5fcfbcd8847ec474df591dd92473ab408af7453ba7d601ae6c87e7296548a87aaaa403571146e64bd43eed92c572658a9c7b341a6b41a60f5c77b8ce2400011eee8a773e8379c4c02d55179f509f8e6523c14f13fd061f9b550f5a92f2fc026c8b7911f139267306e9cea467c093cf34fc8a1d1eff654d5fb44e73032729fd98b6dd4557519b7be682b01ba5e866cf335b7d04d850c03b74e79581d375936b645ab7a37dc0575a490b0f0bc0d8c7e3d646b7b8ed4751eb389b71d97138e7080ca098d32af767d737dce0f22c2f136643876eec34b8fb70811acdcacbf4514b6f32b212888181f20e4b7b4f31f56ef5438c7cb3fb9460b938af33502580151ca1b074d21352dd930065814826fdfbd5deafd8119e0049d607fba42ee787a9b80291edbc51ae27910fd96de0f79563fbb4efcc04fac7b4d1c5b399fae35001675c62d3bc25248ec602d4688bbc647f2e9db340a34db4f73d28a5ea61d2a5b5cfc682138cde3f549949cb151e0c8b250658772631f9043938453f141a0863907262e4552455d75d789c321f5506261bd675a8a1939d4e769266351cd3af00877c0963d4de9fd46ca5f0059d34abdf4138b8ec4590748188d7a0524a55d0843f78720709502dc27429c3b2114c606fab7dae70b0972946967bcc86dd4f993598f718faed6067be4e85b79c03637f81ddae5e524c888cfac808dc5beaf526fb794ac424e09c45229503de69ca26f655d4bafdd18738bfbc3483530409fed09afb8cf9ce6b20436519b8e066462221e906b84fc178958442b94317ed41f4dfb3f55cb5104e79a33fb768d54d63dbd98f95d3abcb912b42854bbdbf32c2d99a6f017d64c4efb1b85f0a79d69e869161c2d0edc5cfd24303db1a63bdb0a92cf094d90d6c1cd6a637084668f8f152b20acff7514f2cf5c39a8d892f2a5bb1c1f05742eebfcabf028494e32bc938d24fbf45c9c00f783e22dfbd37169aaf00988c52f69c9aa2de8253db78207c4369f10a6ce8dce9034e71c879223d5fb136964a12c60752afb10abf0eab4b2145aca58d2dd064e24cdf6c70e632bbd1cbf3d071a9e3ff2900f182b33672e80bbc47a888ef3fe7a2173fe38728db4f9566595a60194bdf9124bff5f8cf5a855c78f53621a30ebf9f66ab99c71d5ba843f0367b8e70931e79860cb04fb2687dca6e1a209eb7a84565a21c39a478dfb365a0a0634f3a2dc82277dbf34edce219f780226f91a3a4260f0c85ec840369b69c257164ccd9189432d0476364be70102345937458f87e11a6f0ee49233950c50a7183240c5b806ab037386a6a2caadf371097c987772588af05e3a52212b57285663634cd09c624efd14628e0b9dec9acc62a2e6c01caaf61b495bfddf73201a472525e8b99508c8f29bec28dfd29e1a41213f532917d8b67be853543c74d630d942960d9ee063a4c626cc1e32d2b68a6309d10a08629e66bc75d0435c5ca13e55c21e31718304a9f151b776539276661ab1fc88c2a66e71471a707c68a61af10c6c0e6b6140aba800bab66b3baf291ce2cfce02dbc38a4e2e9bf537b1f4b4a6e60745cc24f3212319046a7c8a448681e52329c9995a22955e804ae7233fb7f35064d13e7815232e003009c844ca51adc770ee4b5ebf793fcae7c50aa0145ce5e2a1b3a1d7767941f8e843f8591fb411b6869ccc122da87aca2e52df3f45249ee9ba29597baf0f9ce3c40e9b0b8570ba8604af3fbbcd7f8fe98b9bdfbf4ff8e9d2f14f4ba50a44290d8701b94d23b23ccf8ff0ca7be4eaed9f54b0c834b6a7f133d7b300f86b3b6a0bf109e42c8a9bf6195f8d9ce9a024bdc7f5ee42a09c37f3b4bba01857a080a40a4fe08c6fe6ebd92654b7f8fe68dd6ab9a5f53380b380660c5c04de2bf88aba8f25a20628f1ac5ac2a4c45295812244139a246a534eb508aad42b19a402176d1c9610b64452b5103e3422549631c611b6eefb47b2c9d1d6a0f9d6361ce5650cd5a4c6146c868ed52b540bd445685cc970fd595d2c1fdba115099f0c9f4163036d5fe3bb411fd790ea74a631a2259bbd19d6d79bd388794c25983a90171c0e32c87cf797bbbc832b690dff768203e0a621d8a6cc64b2de9c41ab021b0c6799bf3708320fc3f19536eca8506d33b7c6e171c3d32f5d170e337de08a40a4d8ad9b1220c6b3bec7a9381e27348e0f22f09906072b185b166d8501345dc21ff951d067861cb8d123175753b731ac93adba953af4566c1e73c8c5ddc9b4491f2572cc0471807188c0bf81002c0b49f84310593817a498c0d3573362eb8b61bdac05488947a7291d7d25e16d0465e4b1bd2e50fe01cc638aee0639d5ee40e4bc7318de268b05e108b97682eb3b0b1b305fb796028094a71d8597d82c63b39fa88f1a3abc11e1395760618b2d7a5f1faea0abd384c9b5698ba12b0abc4eb735fd1f8696aaf5ef4cc64615661aa91f4c38e451cbdde79993cf9e299c5458a22f25cda81912b40e4ca85f6c213dbdba25624f332e2ad9ee6c93139b2f45750102ad7ab65036e537d639200101febffe01ce9d8ae729cfb1cd5d7337bf5677a9523c37e65ee88b27534dae1fa1e5f6bcb2fd4c65a5c3d7550b6d366b5cb5617999b902a1f01a6246bca0da0fa1becab652eb4951886096230ffd8e8bbcb539815f59518ebbdaf2a3e195dcabc0c17bd575dac9a45e9a7bb4b2ed17a7b9adbc318c6f621b85203cea3a401e35bf08ca5d70dcb6449eb7b5e684383cd12c65f72974b96a900ca5be9d3121eadd713b278e49f8464ccf5db32c3588d9b612046d6295c110e6acd9a2f76b7dc98144a49a27c4b28801c48fe413711b757447039704f5a093225b5fc5c28d0695561782cb1a1f131a33b09c083ed9102c37b0024a1ded417089280c6d4c2fdd114a5ba68b5b1578da89ba191dc0a68c967c66e07138f9ab015987f20feccb8473189afebd1db2b14a0e92f78a5ea47c7fefcc017621e29d94b1db69ec391be7b0c25b2a2fde8e82ac7829f368cc3770aa0d3b75528a2ffaec6c53cebfb5754649881e3e57518919223f5793fc48f1412bce6b8dc69aac5f32b787d476fc914b18f824dd2a389b34332d4cba12c775cb15d128bb7e9ccf7c609045ee26a1d794c088dfa50dd0a5a934a4d804a990042c399bf8b12a42a187a1de0e114506bbfcd1af3908e73370543fd4c432b5f52d18381c28a6f37be0b2b17247dc39aa752f1e0b30cca6f5ef3db5e2b60a3efabaf096ddad514dd78639467e50cb4afbc65e8c9077f2269b640046a49b51455706dd86da802f9d83122bbcbf3a6600828334b11e73316fbffb3d1f3d1e494ec2d49e0b61e952a53b8491cbb077dad0b7e95f5d0d760ecfd4fa94bb17884f7ac21f08242005e2fb10abd5c92f9c0c3a9e820ab417a2ed0e4a55ab7170008ffe37dcf1efc65e4b1865599f1b030d4bb679419996d607602edb6fe1f9de9b799db6ebbf972d03b4f50e392ca0296efc574128b2cdb221e6c2df91493c2a574d145e698eec2d9378095657b184ed4f2454f72a8bece1b040b11a8ae9da9b2029ec05275ccfe7e0115c407d25673c47a80eb6fd00294b888973825549685ac322706d307819cb08c00f7c01405cab067f68ef321d29e667bfcbc8840026527a4f88993d867eeadeb6697768605c678f6ae7eadd401bd09affc546ab485269c89d55145b634563d93400d5ff07bf825896ff9a1ef38456317b16b44c9683706faf1c80edad3625c9cb38a3771db9f9220f3a148f97436cdc9f910434c5fa718c7b0a854c32ca623bca0cfdbbc43d42cb4cfc33a7f639ae7b6d31908ca15d91e0558223b7a4c2ed22244341aa45a1321ceefe65d8241f0fabea4040bdcda811778b601975c5ed1b89da1a92d668d836960f96d52b813de5c36b34cc615db6ff653d01161f23595269aed1695502332c6ce22a1f45b574a9551cc19535198d790487ada3d23fa1eb00b3df1d11930037b369653387d5df4fd4d0e80858a093373beeea607c95d90828560bba764c56dba9cba5eebfb7aa9fbf5fac4e7d8f2113ebc70ff0e4eb2a2062469411eef8620c223c045de78a3fe14af445f450ffe68e6ae2d3075c20fbb0e9f2b7ae4202ee3ea86d9bcbbe47fbc76976089b48b0447fa3fc80627ff4ea689515ac1d4ffc8b9c78eb758155df47c71b208fbdcbfd9bb0700c742b2d87cf377fd8d03b27e8bf2e01bd5b4dccd0270467db1541120c102cb66debd64c8d5db392d6cd12c32c8efa721293c3cb66f483dc5aacc280aaf45a2156e66f7ce7687ab9083c5ff252da865360ca6bee17e15d8c2f39072aa4acc2565ef7fe4d0146c00c098db0fd980486ae54203caff6fbba5e01487d57ee1b062a5aeadba6cfee6853edf2eb708480222c6bdcce4ee9554602d7cb051ea4bb1fc8ff6ffc54d96a09a30b1b26540f00b20b30756dc7e778dc6b1cbeb6bf50054883d0fe2ca129d6a5cf6c094f66f139f35728956e036df170f638953ca06c32a0d0b51fb8d4c2f3bad38dae999ebe37485a66e252094643d7be7fe965a0a42359359a5cad2d17f6c4699bc45ec0bd8bda3c01039b4f509c369da398a5f6be6a679c0ad4216ff264c90a974780d665fb795572a66beefdd85feff4757c99602c743f5fc345ffb372b4c4734882378a9c725382bebb59824b553c000d6c4e5e74cd6a1eabaf63925f8ae915501a394474e90fcee55ab1bd273178ea9546a117b9ccb742e3765ddec73da347c1d2ae2028386b924d8e7ce768a7327c4e3c2ac87d2481383111979abfb8d9402791dc5fbdb36258f23e982064ba81e7b7461b1293e76c34bfbf26f5f79bd7a1516218a46d84ade5e58d22437674533035cce4eb95fcc123d9d368ba1e71093a6c4efad9d995cfd4c2f69724cbff1ee7481a05a0a10852c9bd2c6079d2b6e6d28c26174835aa808498c9ee294f0f717a9cb671c803c3bfeb716d515bc54a40fe6f63816f78fe8e51e286d3160774447f4d4ecd4e234a9ac57008a71f5aeb4540512f1361ed7cd93ca44007f9783b99e7a09a25611dad61d5e6db0496e1510ebfbeb8d899151e6a55ffbbef22fd8afc5fff42777cbab8c0d932dbb1d4cc78ca55b9bd1e2c83e8fa</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -291,7 +185,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">运行环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU%E7%8A%B6%E6%80%81"><span class="toc-number">1.1.</span> <span class="toc-text">CPU状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.</span> <span class="toc-text">中断|异常机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%EF%BC%9A%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E5%93%8D%E5%BA%94"><span class="toc-number">1.3.1.</span> <span class="toc-text">硬件：中断&#x2F;异常响应</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">中断向量表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%EF%BC%9A%E4%B8%AD%E6%96%AD-%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.3.3.</span> <span class="toc-text">软件：中断&#x2F;异常处理程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%BC%E5%90%88"><span class="toc-number">1.3.4.</span> <span class="toc-text">综合</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%BA%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%98%AF%E5%95%A5"><span class="toc-number">2.1.</span> <span class="toc-text">是啥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%9C%E7%94%A8"><span class="toc-number">2.2.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B"><span class="toc-number">2.3.</span> <span class="toc-text">典型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.4.</span> <span class="toc-text">设计</span></a></li></ol></li></ol>
+ 
  
   </div>
 

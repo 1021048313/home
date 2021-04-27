@@ -11,20 +11,18 @@
     
 
     
-    <meta name="description" content="进程和线程">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="进程和线程">
 <meta property="og:url" content="https://zhon.fun/2021/04/18/%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="进程和线程">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale">
-<meta property="og:image" content="https://s2.ax1x.com/2019/03/31/AryWDI.png">
 <meta property="article:published_time" content="2021-04-18T09:43:32.000Z">
-<meta property="article:modified_time" content="2021-04-18T15:13:46.047Z">
+<meta property="article:modified_time" content="2021-04-27T05:39:11.610Z">
 <meta property="article:author" content="Milox">
 <meta property="article:tag" content="OS">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.ax1x.com/2019/03/31/AryWDI.png">
 
     
     <link rel="alternative" href="/atom.xml" title="天空中横跨着" type="application/atom+xml">
@@ -108,99 +106,22 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97PCB"><span class="toc-number">1.2.</span> <span class="toc-text">进程控制块PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97"><span class="toc-number">1.4.</span> <span class="toc-text">进程队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAnew"><span class="toc-number">1.5.1.</span> <span class="toc-text">创建new</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80"><span class="toc-number">1.5.2.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E"><span class="toc-number">1.5.3.</span> <span class="toc-text">阻塞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.</span> <span class="toc-text">层次结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="toc-number">1.8.</span> <span class="toc-text">地址空间</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<p>进程和线程</p>
-<span id="more"></span>
-
-<p>从多道程序设计（允许多个程序同时进入内存并运行）开始</p>
-<p><strong>并发环境</strong>：一段时间间隔内，单处理器上有2+程序同时处于开始执行但没结束的状态，次序不确定。</p>
-<h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Process 具有独立功能的程序在某个数据集合上的一次执行过程，是正在运行程序的抽象，将一个CPU变为多个虚拟CPU。</p>
-<p>操作系统资源以进程为单位分配，每个进程有独立的地址空间。</p>
-<p>操作系统将CPU调度给需要的进程。</p>
-<h2 id="进程控制块PCB"><a href="#进程控制块PCB" class="headerlink" title="进程控制块PCB"></a>进程控制块PCB</h2><p>目的：管理进程</p>
-<p>是一个数据结构，又称进程描述符、进程属性</p>
-<p>内容：</p>
-<ul>
-<li>进程描述信息<ul>
-<li>进程标识符</li>
-<li>进程名</li>
-<li>用户标识符</li>
-<li>进程间关系</li>
-</ul>
-</li>
-<li>进程控制信息<ul>
-<li>当前状态、优先级</li>
-<li>入口地址、磁盘位置</li>
-<li>队列、指针</li>
-</ul>
-</li>
-<li>所拥有的资源和使用情况<ul>
-<li>虚拟地址空间状况</li>
-<li>打开文件列表</li>
-</ul>
-</li>
-<li>COU现场信息<ul>
-<li>通用寄存器</li>
-<li>页表</li>
-</ul>
-</li>
-</ul>
-<p>PCB是系统感知进程存在的唯一标志，一个PCB对应一个进程，所有PCB组成进程表。</p>
-<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>（这里我还有印象）</p>
-<p>三种基本状态</p>
-<ul>
-<li>运行Running</li>
-<li>就绪Ready：没有CPU</li>
-<li>等待Waiting/Blocked ：做不了</li>
-</ul>
-<p>状态转换（想一下就行）</p>
-<p><img src="https://s2.ax1x.com/2019/03/31/AryWDI.png"></p>
-<p>其它状态：</p>
-<ul>
-<li>创建new</li>
-<li>终止terminated</li>
-<li>挂起suspend</li>
-</ul>
-<h2 id="进程队列"><a href="#进程队列" class="headerlink" title="进程队列"></a>进程队列</h2><p>PCB的队列，状态改变-&gt;PCB出队、入队</p>
-<h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><p>完成进程状态之间的转换，不能被中断–原语</p>
-<p><strong>原语</strong>：原子操作primitive，必须持续，不能被打断</p>
-<h3 id="创建new"><a href="#创建new" class="headerlink" title="创建new"></a>创建new</h3><ol>
-<li><p>给新进程分配：</p>
-<ul>
-<li>唯一标识</li>
-<li>进程控制块PCB</li>
-<li>地址空间</li>
-</ul>
-</li>
-<li><p>初始化，填默认值</p>
-</li>
-<li><p>插入队列中，设置队列指针</p>
-</li>
-</ol>
-<p>fork（复制调用进程） exec（用新程序代码覆盖原来的地址空间） in unix</p>
-<p>createProcess in win</p>
-<h3 id="撤销"><a href="#撤销" class="headerlink" title="撤销"></a>撤销</h3><p>即结束进程</p>
-<ol>
-<li>回收资源</li>
-<li>收回PCB</li>
-</ol>
-<p>exit in unix</p>
-<p>TerminateProcess in win</p>
-<h3 id="阻塞"><a href="#阻塞" class="headerlink" title="阻塞"></a>阻塞</h3><p>处于运行状态的进程期待某一事件发生，进程自己执行阻塞原语</p>
-<p>wait in unix</p>
-<p>WaitForSingleObject in win</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><ol>
-<li>系统进程vs用户进程</li>
-<li>前台进程vs后台进程 （和用户直接交互/不交互）</li>
-<li>CPU密集型进程vs IO密集型进程</li>
-</ol>
-<h2 id="层次结构"><a href="#层次结构" class="headerlink" title="层次结构"></a>层次结构</h2><p>Unix进程家族树：init根</p>
-<p>Windows地位相同</p>
-<h2 id="地址空间"><a href="#地址空间" class="headerlink" title="地址空间"></a>地址空间</h2><p>操作系统给每个进程都分配地址空间（相对地址）</p>
-  
+		<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="72178d0896078dfeb715066cf7cb8f6c05f5a0b17010de0ebaffb925710f9347">45473c50cb2bed408fcb75efd992789a3d9606c9280b3615f84618b0271e36c2c91de5f870ee1c53a066212e5e4453248601e73452ff7ec2866d47af4d7f9336ca4843bf11ff8b02cf381dfa2b5059c63c852ddbab4f5ef6e79ac1d5287fc1df8df9e0b756fc8b4d7283786ac0304d48f4e46ab86186e1f177ba3585df1637279e6fa7c0d002db4434cf433949d1768ebe1d56e7547eadda8e4b1e3014d2cefd9f5a01e5b11d2906455ec043b8c2c2ff03b2a32e13dcfedf5e303e5f391bf604de339d5eefb98b57d786e4eeddba5eeafbe12aacc9837cf58a6012449260af78a988bbe4b99e88538e0001a3ec60ff4c642e133dd4db13ceca73ad6886be4aa71df9eceb986065f362c5fb611dcea76081903e5c0891ec00f8a4acb2634d29bcf33e9679b33ceb1e407b941e57f643446e70e9ec0997fa81edf92a3173a9d05769454957b1d2381f54a5d6daff405144a6f0f035df453fbf0836dff3072fc5f111a6f4ee1ca388cb174db25693a88a2040e2f89ec882c9f738699509f3c0c15314f3c85dd10c6272470a5a248279b4faf856bd6d5e898316f2779ccb93de1127291fd1763cb5a2d384d2624b7f3bd8f1acca049a52829e8e81bafea3e7112f6f4d96a7d6bf2fb298b6f85edd61f3afca9ee2fc4da0ed31c4f1d8b02ad77d54b7f0ccce953d2e86efb594c84265a9f744ee14763707e5cec6856fc7e93114cd6673cdd452b32774beb6bfb50c6045c0ac1221a2d46f87fecfaec837c7502b2e88dc270f4f2db3689d64cb7b11afe2ab5feade59568d1008502c2062b681e0fa4ae245f6222d2c3201b0b4f4421a06354d05069f6ab89fa0e3ac9e254b1f6ad4df93bb51a616cda1b534ed3d2ff09f71ca1f129f5186794125a292f61a2632e21dfccd72cc926874b45f4d78a028b9331ca679cefe9ed0d0690ab85e8f987dbb851f3dbbb23748aa6de667d65c6af6d114adad22c7c4377b5b8c6317bfc82b9069a7a5ffb515008e66c555d786ef1c45ee5cab4171c6be482e5e968980eccbc6f93ac84c1b9d9436783f959142f40082c6f0d47fc353ff665ed3446f64e0da068f9156bbc5b4a0776a4a702ef12866925084afa0fafdb41c9502f0b50a2d95a7094d16cb66b599e4968bddcf12f831709ae1d86c1f42280a4a50664c921f9456bf3c3716bf05a67bf6748a9fce668b94f5a09ec3ef02aa9f2663ca12641413a9fe75a5a42a2ed8e899e515b81d47376c67df4b64c58b17f5240455689f0160b64b714a0650265b247f5db48979f9afab08068663ba63ab793457022637779187343a60de06faa23c26e1bf5f6bef4eccd373ed037cdc8b2db4615395dfa9e2d798ba641b7f53b84d4e1a42bcb2d0a74cf24c41bb5db88d44eb31924b3203a7f40bf09c89618d14eea99ffe536fcaa5c1daff5f4242ab4df4c3d6b69e60298a33b2dd6eaf665207430ebd73d7352576efa682f133219e59c05c942dc2d74066eecc6329390fba6b38e7c64282d765bb7a353d9d70027a4e29f268951ea814e315694bbbf491cd1784a159999f944be0dce29f5f9fe801ace18ce8b2439170ec0740fa303400dc93356babb3988b5d2cfe91eff83e790d353dec412c9e6796b2ad90f03a7377f3f95369c214b8cd7109968bd59a369d8b99ed2272b280b1006aef2cd6876966dc47d7c2822d524134ee7e96e25d68ad27d5bdcd2e7d1e9b47722bad720f3d96bc029e6dce6432909f995c92247933a7758083b1b960217b42ee702738bec782f3f5d441314b3ad834eab1d567a0074b6e9cc15162da958113f3aa4628bb97274245c3a736b5d5fed904b736fc4a8d67f3d91c485d761fdc7258a69b548a78f86c15a4a984d737a50b9fb68c2f97237117665682331148743e55775324a1d9e3ca2074cf9a79afa5fac7dd742682dad342812c35b541f9ad428392e439f54756b318c02553ea87d325b5a833a0d2239d2b71beff4b58435626e26ae707c02378bd1f71dffc72f1b588b6bc7bd83fffa1995a48cee68097297d5b4e8e922d948118491ea0f63668d94529af3db781a796168a0890aba122d9df1910aa5ec83e5e209518403d028848276c9d4b09abb551565bc65f434e36ff48b782d34a7697e4f00bd3435fd7403d10d1b48699398957c4a72f016b77778481492089ab3e9cb09a78ea24c8d8764cd62cc788d9b7faeb95f76260c35017ebb9aefa363a52aeb449fb9c9e0c4b1f470efbf071efb0003ec24f22b5feba9faebf8a5fcb20f104c302a4496888ffaaf83b1d9731dcc8b61d7368fdd664d82eb34c07199a1d18f5b76019649b525548c0653bc51171c25fea6066a1b1054dca358d93cb99ace0bee3d3ab535818138adbf9bdcab8382dc6c2c605daaf30c56e3b0bfc68069ca980af5298a6eeb2c04f26db64a2abdf720dafa01babcaf137043b9fe6d1d67277c39bd201a3dce5b861b0de9ee8a55ad901d3e930957580b3beb5f5bee883f5941ae9289fa743fc397454cfdc405e91409a176856814b7100db5ba2c363371c144bf59c285739495c62e5019ca1576cde075db8c56e877dc69ab87f052aa5c1ebc0f548fc0127cbcf0828927cdcdf6b94ca6a29d284fb789a3942b57d7581a9174269ad7974d6cd5626a0acedbb0e6e1eaf23999207c9beac9be8b460911538cbeaa39fedb9d1f3c7ca8fa753834f0637074cfceaddecca077e1e47786e6537c6625c1b3f89de341470a87f5335a4fde247cdce017ec852e6867a4d6c0be9aa1fcf9be691a97dac33b3daa028e72a59c62d9f53252c7ccdb5a27cd44fd0900be777187c93a0137b2b21c193ca17905a830d6a5827f9091373cb645b51882d1a7e7418df67d336210464ee6db2666cf163e320c1b747bc9e1caa43dfb879c9b33a086e6b85782540f696fc6134717d8bedee2d369f4436c05ca17dd4d980ecaf6fdfd91f5b9b0b863fbd0661b0fe36e4b5dd311b8efe013f38f056bf20731d1ec3b1c0c34b59563c1b62f56f42459eeda1bca1837a68d11f3d1f9bb7c2602d679a660754de3658c022333389bbbbd8d4e640220ea7ceb2c3b1281714fbd5d2795b89b47b3d7f79c7375fba8ff0412684960d0d1c4ee94ae09546a5a67771ab7cdf5dab36015bb9b24c99134d88123437ff538e45575f16403fe28d1e74d9b936f7472d9b4c1986613303d646b6aaa66e66d51f8f782b8f6e07040c56d0d73e0a403d646a52e108fe05d376c05e1ccf62134164de8d41874fd47c67084ac6c1d85bb4ae7c9c7ec91483048732585de47edf9bc1b3356ee5b7df870fdef7f12a70c75ef59e637008668ee0c93e00ce67ed611af47995547c317de6e7863cf59b99038c1a6bb595c5c7b503891b5f5471e8de7966454ffbdf1b5198ee75620c206402442890843a35e8d4cf6eb31b1efc076aeb18b0ea975beba465e9f42cea6aad80d7ab37548539a816a2060a412bdfa787b9bcc27922e71f563361e8f986eda86033b9fa1ccd9f2c6a73fbf5be094813e0e313d40c0bf4078422ecaeae30389876932091dbe66eef65c1862fea9a6ed11a0eafc1a238a196fd0c2e58d887c16252195b0118ab8e16b4b70a292d4ed60c672eb5866c23543348148178bad8756599b3a5e654a16f4bc9a053b5c5c7b73fa6e96417126e646458b47cc4d18e16465880b9f70d33a1f7dca7d7477c0ce4df72837b198b9b4a2c9d1ed169c1c3a7d7b8992a007c6502038081e1f1b618ec2de7370677de264c28ddd8a394a75bee23c2cec9f8e23d250adb6d8eb402e642c772861a7e76785c9cb1fb15af74993ab85145d539a2852bcda38f9f113f88bd7b15d4db79dd079e723c06d1bd5aa45fec54ec11541d1ae8388ed940d4a332e3c60598983bf7790635a43136e113b1f3fc7c5e249e090097efa61c8d79a3b754df0f4def02228c693a636a96376d9cedaf60ba2caca6d729981787b34a269717506678a1a1ae6b6b49234271cfaab4c4d5e34fe92ce76cd85ec25960b0fc81f3a29087acb629942d154e3c9334bb08bad8894bf52e854d3a3e91b4d81b5fa760bb884b6e7780e375cd290738c927fa427d587a3feb0861d4956cd7420a0b20d177a0a59a4234cdd5f0faec9e62a8a530cc9d10550237113f28bb1c109d42ca9ca3f6ea4eae13162e57f5f77e64f6f8304f4743ea920459ede75d7456fe3dc99b52fda4b7bc3693f11f75f3a986a928301579c0d689e21864a416461c352be134b48d9d8cca4dd030eef0c71e4c6b7cc4689bed588501e46866ada381d679136d66914b0b52b5d4b0ef2679140825a6fcab43b60e6b0553f4094787aca6a0ef1e45443cb90d8a566a4464bfc73ab169e08cbf42f04399bcfbb97fbcd9e30dd32843e5649867742352bb5f8fb862889e8eedfa603972141da534ea8af61e54d04bf25a5f68d24cd1f67843b0ef131bf6ccab6b6d77580bd82d59cca4f028dde513be0035b319c8da0783b64442ceffd9e860bf9b261bfb20ef8708d11ece52f56667210383d2b4ba8fb8d72ae631eef3a26ce137541af893b81203927442f9f3c10e8bc78cadf333320f71c27e3589b829dcba4ca93abc5453ec5b09518781396ded1f774af76eba92ba6b3c140628665eb8ad77d019ddb0fc2eacb1c0e330e75a63ec135c58a2b7605b5aa26938c4945d01b7f02ac94ba2e91a33acc1c44a90c06196098a628aa37ceb2b15ef92d08778fbfd31389c2dba58857048a362bb5553825eb133277e9c66cfc8f89527b69f77bfbea6c77b97f8a96c9797be4e5c7cdb73f1d2a6724213d3ed508f02f8b979b727d47793a5ffb7d5c4de1e3097edabd37742bf6895fd53aa2450db59e13e8dd5c835b910a68d693e81cc9817fc388d060d1959ca172bcf6d28c23c79f95b0f367e7158eea037460e659434fae82537c116345f84909360d8f77ea4e3781d9d13a767ec56aa28b8701b5d7773d05488ae9ea28ca1ba1f030c63cfa3c93bce8bf4f61b5970787ebbd53a45eba579774a60db4c80c165d08a38ed1d5b3876daace48b20afbefe518eddbd26d2edf6f9575d17d402c9473ba5241e9d73834b304a9402c7fc847b6d59d8418c9fda26bc9c2cb8d7272ca2cd54211f40a01424ea51cfbecdeccea8961a24bb240b2ab4b61779dd69f8b1634f0fc6d5d1b238ca525d27ea1e33db21f986b21a0c237331b92e15146db128c860cec61fd281d639b99ddd5095ec38ab828eb776cf79befa64c1986a7557360931fa2b7726e71b572992278dc4d53ba8ac0219bad15206091382315889b1107e98f125baba620caf2d8fe7813aea97db6781c88d698a96e2cfc5c562c40e83f3b28967abaa8731267de2501da4150803bcc402a31874fefa2fc3b15912d45cc4ff7c99cf40c2b114a5459e9cbffb6da7cafe3bbaaf2c7381a7499c731665afb4fd14b7cfffe88accc2d68906db39807f211c6bd812a5ce88af9db90a42ed5d2fc82fe77884f6f92876436d2eadf18005aca3a0d376a94306e4b71ed64f7545c4cadf0a6946d3e778194b8a6594f034155dfb1326746f4a3a43fec1ba92cc28658bbc96184b466fbf9671fd0612d4d45f516322a6d69a1f3859f6ee321d7d0c764a28248f5da6e029021d9d741d4555693310999a9faee5ae46da61ae6f28faca52c241a114cf198cc1a856</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -264,7 +185,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">进程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6%E5%9D%97PCB"><span class="toc-number">1.2.</span> <span class="toc-text">进程控制块PCB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81"><span class="toc-number">1.3.</span> <span class="toc-text">状态</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E9%98%9F%E5%88%97"><span class="toc-number">1.4.</span> <span class="toc-text">进程队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="toc-number">1.5.</span> <span class="toc-text">进程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAnew"><span class="toc-number">1.5.1.</span> <span class="toc-text">创建new</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%92%A4%E9%94%80"><span class="toc-number">1.5.2.</span> <span class="toc-text">撤销</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BB%E5%A1%9E"><span class="toc-number">1.5.3.</span> <span class="toc-text">阻塞</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-number">1.6.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84"><span class="toc-number">1.7.</span> <span class="toc-text">层次结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4"><span class="toc-number">1.8.</span> <span class="toc-text">地址空间</span></a></li></ol></li></ol>
+ 
  
   </div>
 
