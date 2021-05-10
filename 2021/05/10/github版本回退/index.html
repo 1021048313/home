@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>wxml中使用js定义的函数 | 天空中横跨着</title>
+    <title>github版本回退 | 天空中横跨着</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Milox">
     
 
     
-    <meta name="description" content="使用wxs">
+    <meta name="description" content="代码传错了，覆盖了之前的正确版本咋搞">
 <meta property="og:type" content="article">
-<meta property="og:title" content="wxml中使用js定义的函数">
-<meta property="og:url" content="https://zhon.fun/home/2021/04/27/wxml%E4%B8%AD%E4%BD%BF%E7%94%A8js%E5%AE%9A%E4%B9%89%E7%9A%84%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="github版本回退">
+<meta property="og:url" content="https://zhon.fun/home/2021/05/10/github%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="使用wxs">
+<meta property="og:description" content="代码传错了，覆盖了之前的正确版本咋搞">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-04-27T04:59:56.000Z">
-<meta property="article:modified_time" content="2021-05-03T15:43:03.507Z">
+<meta property="article:published_time" content="2021-05-10T02:16:52.000Z">
+<meta property="article:modified_time" content="2021-05-10T02:44:22.243Z">
 <meta property="article:author" content="Milox">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
 
     
@@ -89,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/home/2021/04/27/wxml中使用js定义的函数/" title="wxml中使用js定义的函数" itemprop="url">wxml中使用js定义的函数</a>
+      <a href="/home/2021/05/10/github版本回退/" title="github版本回退" itemprop="url">github版本回退</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/home/about" title="Milox" target="_blank" itemprop="author">Milox</a>
 		
   <p class="article-time">
-    <time datetime="2021-04-27T04:59:56.000Z" itemprop="datePublished"> Published 2021-04-27</time>
+    <time datetime="2021-05-10T02:16:52.000Z" itemprop="datePublished"> Published 2021-05-10</time>
     
   </p>
 </header>
@@ -109,14 +110,37 @@
 		
 		</div>
 		
-		<span id="more"></span>
+		<p>代码传错了，覆盖了之前的正确版本咋搞</p>
+<span id="more"></span>
 
-<p>使用wxs</p>
+<ol>
+<li><p>查询id，找到对应提交的id</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git log --pretty=oneline</span><br></pre></td></tr></table></figure></li>
+<li><p>回退</p>
+<p>错误：会丢失</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard 正确版本的id</span><br></pre></td></tr></table></figure>
+
+<p>正确：revert</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert 错误版本id</span><br></pre></td></tr></table></figure>
+
+<p>或者批量revert</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert OLDER_COMMIT^…NEWER_COMMIT</span><br></pre></td></tr></table></figure></li>
+</ol>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/home/categories/coding/">coding</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/home/tags/git/">git</a>
+  </div>
 
 </div>
 
@@ -124,7 +148,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zhon.fun/home/2021/04/27/wxml%E4%B8%AD%E4%BD%BF%E7%94%A8js%E5%AE%9A%E4%B9%89%E7%9A%84%E5%87%BD%E6%95%B0/" data-title="wxml中使用js定义的函数 | 天空中横跨着" data-tsina="" class="share clearfix">
+	  <div data-url="https://zhon.fun/home/2021/05/10/github%E7%89%88%E6%9C%AC%E5%9B%9E%E9%80%80/" data-title="github版本回退 | 天空中横跨着" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -137,19 +161,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/home/2021/04/28/灵感和网站/" title="灵感和网站">
-  <strong>上一篇：</strong><br/>
-  <span>
-  灵感和网站</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/home/2021/04/21/diary/"  title="diary">
+<a href="/home/2021/05/04/阻塞系统调用/"  title="阻塞系统调用">
  <strong>下一篇：</strong><br/> 
- <span>diary
+ <span>阻塞系统调用
 </span>
 </a>
 </div>
