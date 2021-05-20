@@ -4,24 +4,24 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>游戏脑洞 | 天空中横跨着</title>
+    <title>java使用map | 天空中横跨着</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Milox">
     
 
     
-    <meta name="description" content="As you can see,">
+    <meta name="description" content="定义增删改遍历打印用Set，迭代器 123456Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entrySet&#x3D;stringMap.entrySet();for (Map.Entry&lt;String, Integer&gt; entry : entrySet) &amp;#123;    String key &#x3D; entry.getKey();    int">
 <meta property="og:type" content="article">
-<meta property="og:title" content="游戏脑洞">
-<meta property="og:url" content="https://zhon.fun/home/2021/04/19/%E6%B8%B8%E6%88%8F%E8%84%91%E6%B4%9E/index.html">
+<meta property="og:title" content="java使用map">
+<meta property="og:url" content="https://zhon.fun/home/2021/05/20/java%E4%BD%BF%E7%94%A8map/index.html">
 <meta property="og:site_name" content="天空中横跨着">
-<meta property="og:description" content="As you can see,">
+<meta property="og:description" content="定义增删改遍历打印用Set，迭代器 123456Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entrySet&#x3D;stringMap.entrySet();for (Map.Entry&lt;String, Integer&gt; entry : entrySet) &amp;#123;    String key &#x3D; entry.getKey();    int">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-04-19T15:08:46.000Z">
-<meta property="article:modified_time" content="2021-05-03T15:42:31.801Z">
+<meta property="article:published_time" content="2021-05-20T12:07:28.000Z">
+<meta property="article:modified_time" content="2021-05-20T12:20:46.105Z">
 <meta property="article:author" content="Milox">
-<meta property="article:tag" content="idea">
+<meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary">
 
     
@@ -90,14 +90,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/home/2021/04/19/游戏脑洞/" title="游戏脑洞" itemprop="url">游戏脑洞</a>
+      <a href="/home/2021/05/20/java使用map/" title="java使用map" itemprop="url">java使用map</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/home/about" title="Milox" target="_blank" itemprop="author">Milox</a>
 		
   <p class="article-time">
-    <time datetime="2021-04-19T15:08:46.000Z" itemprop="datePublished"> Published 2021-04-19</time>
+    <time datetime="2021-05-20T12:07:28.000Z" itemprop="datePublished"> Published 2021-05-20</time>
     
   </p>
 </header>
@@ -106,99 +106,22 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B4%E6%A1%A5%E5%AD%A6%E9%99%A22%E5%8F%B7%E5%AE%BF%E8%88%8D%E6%A5%BC%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">兴桥学院2号宿舍楼事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">地理设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.2.</span> <span class="toc-text">背景设定</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-number">2.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0"><span class="toc-number">3.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B9"><span class="toc-number">4.</span> <span class="toc-text">改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%89%93%E5%8D%B0"><span class="toc-number">5.</span> <span class="toc-text">遍历打印</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">6.</span> <span class="toc-text">其它</span></a></li></ol>
 		
 		</div>
 		
-		<p>As you can see,</p>
-<span id="more"></span>
+		<span id="more"></span>
 
-<h1 id="兴桥学院2号宿舍楼事件"><a href="#兴桥学院2号宿舍楼事件" class="headerlink" title="兴桥学院2号宿舍楼事件"></a>兴桥学院2号宿舍楼事件</h1><h2 id="地理设定"><a href="#地理设定" class="headerlink" title="地理设定"></a>地理设定</h2><p>中心思想：学校的喜鹊好多啊。</p>
-<p>地域：兴庆市兴桥区</p>
-<p>大致地图：</p>
-<table>
-<thead>
-<tr>
-<th>写字楼</th>
-<th></th>
-<th>医院</th>
-<th>医院</th>
-<th></th>
-<th>中学</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>图书馆</td>
-<td></td>
-<td>学院1号宿舍</td>
-<td>学院2号宿舍</td>
-<td></td>
-<td>废弃宿舍</td>
-</tr>
-<tr>
-<td>政府</td>
-<td></td>
-<td>学院</td>
-<td>学院</td>
-<td></td>
-<td>废弃宿舍</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>居民区</td>
-<td></td>
-<td>公园</td>
-<td>公园</td>
-<td></td>
-<td>居民区</td>
-</tr>
-<tr>
-<td>居民区</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>居民区</td>
-</tr>
-<tr>
-<td>居民区</td>
-<td></td>
-<td>商场</td>
-<td>商场</td>
-<td></td>
-<td>居民区</td>
-</tr>
-</tbody></table>
-<h2 id="背景设定"><a href="#背景设定" class="headerlink" title="背景设定"></a>背景设定</h2><p>中心思想：学校的喜鹊好肥啊。</p>
-<ul>
-<li>10年前的商场火灾。</li>
-<li>废弃的员工宿舍。</li>
-<li>宿舍里有很多镜子</li>
-<li>宿舍楼的温度异常地低</li>
-<li>电梯会停在奇妙的楼层（电梯算法？）</li>
-<li>唯一的一门非专业课是摄影（会拍到奇怪的东西）</li>
-<li>玩家可以触发“史上最久延毕”成就</li>
-<li>4月份可以捡到柳絮球</li>
-<li>游戏开始需要打个电话提高交流技能，不然没人理你</li>
-<li>建筑的接地线可以接通时间</li>
-<li>钟楼会报时</li>
-<li>附近的医院出过医疗事故</li>
-<li>教学楼有生物研究所，非常安静</li>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h1 id="增"><a href="#增" class="headerlink" title="增"></a>增</h1><h1 id="删"><a href="#删" class="headerlink" title="删"></a>删</h1><h1 id="改"><a href="#改" class="headerlink" title="改"></a>改</h1><h1 id="遍历打印"><a href="#遍历打印" class="headerlink" title="遍历打印"></a>遍历打印</h1><p>用Set，迭代器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;Map.Entry&lt;String,Integer&gt;&gt; entrySet=stringMap.entrySet();</span><br><span class="line"><span class="keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry : entrySet) &#123;</span><br><span class="line">    String key = entry.getKey();</span><br><span class="line">    <span class="keyword">int</span> value = entry.getValue();</span><br><span class="line">    System.out.println(key + <span class="string">&quot;=&quot;</span> + value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h1><ul>
+<li><p><code>getOrDefault()</code>获取指定 key 对应对 value，如果找不到 key ，则返回设置的默认值。</p>
+<blockquote>
+<p>遍历字符串并统计出现次数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">   stringMap.put(word,stringMap.getOrDefault(word,<span class="number">0</span>)+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
 <li></li>
 </ul>
   
@@ -208,13 +131,13 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/home/categories/gaming/">gaming</a>
+  <a class="article-category-link" href="/home/categories/coding/">coding</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/home/tags/idea/">idea</a>
+  <span></span> <a href="/home/tags/java/">java</a>
   </div>
 
 </div>
@@ -223,7 +146,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://zhon.fun/home/2021/04/19/%E6%B8%B8%E6%88%8F%E8%84%91%E6%B4%9E/" data-title="游戏脑洞 | 天空中横跨着" data-tsina="" class="share clearfix">
+	  <div data-url="https://zhon.fun/home/2021/05/20/java%E4%BD%BF%E7%94%A8map/" data-title="java使用map | 天空中横跨着" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -236,19 +159,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/home/2021/04/19/回调函数/" title="回调函数">
-  <strong>上一篇：</strong><br/>
-  <span>
-  回调函数</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/home/2021/04/18/进程和线程/"  title="进程和线程">
+<a href="/home/2021/05/20/快速去掉代码行数/"  title="快速去掉代码行数">
  <strong>下一篇：</strong><br/> 
- <span>进程和线程
+ <span>快速去掉代码行数
 </span>
 </a>
 </div>
@@ -265,7 +180,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B4%E6%A1%A5%E5%AD%A6%E9%99%A22%E5%8F%B7%E5%AE%BF%E8%88%8D%E6%A5%BC%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">兴桥学院2号宿舍楼事件</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%B0%E7%90%86%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.1.</span> <span class="toc-text">地理设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E8%AE%BE%E5%AE%9A"><span class="toc-number">1.2.</span> <span class="toc-text">背景设定</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A2%9E"><span class="toc-number">2.</span> <span class="toc-text">增</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%A0"><span class="toc-number">3.</span> <span class="toc-text">删</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%B9"><span class="toc-number">4.</span> <span class="toc-text">改</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%81%8D%E5%8E%86%E6%89%93%E5%8D%B0"><span class="toc-number">5.</span> <span class="toc-text">遍历打印</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">6.</span> <span class="toc-text">其它</span></a></li></ol>
  
   </div>
 
